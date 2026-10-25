@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SlothSnooze AI — 100% Offline Sleep Sanctuary & Sloth-Paced Story Weaver (Google Gemma 2)</title>
+  <meta name="description" content="SlothSnooze AI is a 100% local, open-weights ambient sleep sanctuary and zero-stress morning digest powered by Google Gemma 2 (2B) and procedural Web Audio synthesis for Hacktoberfest 2026.">
+  <meta name="keywords" content="Hacktoberfest, DEV Challenge, Google Gemma 2, Open Source AI, Sleep Companion, Web Audio API, Binaural Beats, Offline AI">
+  <meta name="author" content="Ishita Singh">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="SlothSnooze AI — 100% Offline Sleep Sanctuary & Sloth-Paced Story Weaver">
+  <meta property="og:description" content="Channel your inner sloth. 100% local procedural soundscapes, Gemma 2 bedtime stories, 4-7-8 parasympathetic breathing, and zero-stress morning briefings.">
+  <meta property="og:image" content="docs/assets/sloth_meta_preview.png">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦥</text></svg>">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 60 FPS Twilight Canopy & Sleeping Sloth Visualizer Canvas -->
+  <canvas id="canopy-canvas"></canvas>
+
+  <!-- Application Content Wrapper -->
+  <div class="app-container">
+
+    <!-- Top App Header -->
+    <header class="app-header">
+      <div class="brand-section">
+        <div class="brand-icon">🦥</div>
+        <div>
+          <h1 class="brand-title">SlothSnooze AI <span class="brand-badge">Google Gemma 2 (2B)</span></h1>
+          <p class="section-subtitle">100% Offline Sleep Sanctuary, Generative Soundscapes & Sloth-Paced Dream Weaver</p>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <button id="singing-bowl-btn" class="btn-secondary" title="Strike Tibetan singing bowl chime">
+          🔔 Bowl Chime
+        </button>
+
+        <div class="timer-group">
+          <label for="sleep-timer-select" class="sr-only" style="display:none;">Sleep Timer</label>
+          <select id="sleep-timer-select" class="select-sleep-timer" title="Select sleep timer">
+            <option value="0">Timer: Off</option>
+            <option value="15">Sleep Timer: 15m</option>
+            <option value="30">Sleep Timer: 30m</option>
+            <option value="45">Sleep Timer: 45m</option>
+            <option value="60">Sleep Timer: 60m</option>
+          </select>
+          <div id="timer-badge" class="timer-badge">Timer: Off</div>
+        </div>
+
+        <button id="play-all-btn" class="btn-master-play">
+          <span>▶</span> Start Sanctuary
+        </button>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tab-bar" aria-label="Main Navigation">
+      <button class="nav-tab active" data-tab="soundscape" id="nav-tab-soundscape">
+        <span>🌧️</span> Soundscape Studio
+      </button>
+      <button class="nav-tab" data-tab="story" id="nav-tab-story">
+        <span>📖</span> Gemma Bedtime Stories
+      </button>
+      <button class="nav-tab" data-tab="breathing" id="nav-tab-breathing">
+        <span>🫁</span> 4-7-8 Breathing Guide
+      </button>
+      <button class="nav-tab" data-tab="digest" id="nav-tab-digest">
+        <span>☕</span> Morning Sloth Briefing
+      </button>
+      <button class="nav-tab" data-tab="audit" id="nav-tab-audit">
+        <span>⚡</span> The Lazy Payoff Audit
+      </button>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main>
+
+      <!-- TAB 1: SOUNDSCAPE STUDIO -->
+      <section id="tab-soundscape" class="tab-pane active">
+        <div class="section-header">
+          <h2 class="section-title">Procedural Soundscape Studio</h2>
+          <p class="section-subtitle">100% algorithmic audio synthesis in Web Audio API. Zero external MP3 downloads. Airplane-mode friendly.</p>
+        </div>
+
+        <!-- Preset Cards -->
+        <div class="presets-container">
+          <div class="preset-card active" data-preset="slothnest" id="preset-slothnest">
+            <div class="preset-card-title"><span>🦥</span> The Sloth Sanctuary</div>
+            <div class="preset-card-desc">Canopy rain drizzle, 48 BPM restorative heart pulse, night breeze, and subtle fire embers.</div>
+          </div>
+
+          <div class="preset-card" data-preset="rainforest" id="preset-rainforest">
+            <div class="preset-card-title"><span>🌧️</span> Misty Rainforest Canopy</div>
+            <div class="preset-card-desc">Lush tropical downpour, swaying tree branches, and therapeutic 432Hz delta brainwave tones.</div>
+          </div>
+
+          <div class="preset-card" data-preset="hearth" id="preset-hearth">
+            <div class="preset-card-title"><span>🔥</span> Cozy Sloth Hearth</div>
+            <div class="preset-card-desc">Crackling birchwood embers, gentle mountain draft, and deep grounding pulse.</div>
+          </div>
+
+          <div class="preset-card" data-preset="astral" id="preset-astral">
+            <div class="preset-card-title"><span>🌌</span> Deep Delta Cosmic Drift</div>
+            <div class="preset-card-desc">Hypnotic 432Hz binaural delta beats (2.5 Hz frequency) designed for Stage 3 slow-wave sleep.</div>
+          </div>
+        </div>
+
+        <!-- Mixing Console & Equalizer -->
+        <div class="soundscape-grid">
+          <div class="mixer-panel">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+              <h3 style="font-family:var(--font-heading); font-size:1.15rem; font-weight:600;">Multi-Track Mixing Console</h3>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span style="font-size:0.8rem; color:var(--text-muted);">Master:</span>
+                <input type="range" id="master-volume" min="0" max="1" step="0.05" value="0.85" style="width:100px;" title="Master Volume">
+              </div>
+            </div>
+
+            <!-- Channel: Rain -->
+            <div class="mixer-channel">
+              <div class="channel-info">
+                <div class="channel-name"><span>🌧️</span> Canopy Rain</div>
+                <div class="channel-type">Voss 1/f Pink Noise</div>
+              </div>
+              <div class="channel-slider-wrapper">
+                <input type="range" id="vol-rain" min="0" max="1" step="0.05" value="0.5" title="Rain Volume">
+              </div>
+              <button class="channel-toggle active" id="toggle-rain">Active</button>
+            </div>
+
+            <!-- Channel: Fireplace -->
+            <div class="mixer-channel">
+              <div class="channel-info">
+                <div class="channel-name"><span>🔥</span> Hearth Embers</div>
+                <div class="channel-type">Poisson Crackle Bursts</div>
+              </div>
+              <div class="channel-slider-wrapper">
+                <input type="range" id="vol-fire" min="0" max="1" step="0.05" value="0.15" title="Fireplace Volume">
+              </div>
+              <button class="channel-toggle active" id="toggle-fire">Active</button>
+            </div>
+
+            <!-- Channel: 432Hz Binaural Delta -->
+            <div class="mixer-channel">
+              <div class="channel-info">
+                <div class="channel-name"><span>🧠</span> 432Hz Delta</div>
+                <div class="channel-type">2.5Hz Binaural Shift</div>
+              </div>
+              <div class="channel-slider-wrapper">
+                <input type="range" id="vol-binaural" min="0" max="1" step="0.05" value="0.35" title="Binaural Beats Volume">
+              </div>
+              <button class="channel-toggle active" id="toggle-binaural">Active</button>
+            </div>
+
+            <!-- Channel: Night Wind -->
+            <div class="mixer-channel">
+              <div class="channel-info">
+                <div class="channel-name"><span>🍃</span> Canopy Wind</div>
+                <div class="channel-type">0.08Hz LFO Bandpass</div>
+              </div>
+              <div class="channel-slider-wrapper">
+                <input type="range" id="vol-wind" min="0" max="1" step="0.05" value="0.45" title="Night Wind Volume">
+              </div>
+              <button class="channel-toggle active" id="toggle-wind">Active</button>
+            </div>
+
+            <!-- Channel: Sloth Heartbeat -->
+            <div class="mixer-channel">
+              <div class="channel-info">
+                <div class="channel-name"><span>🦥</span> Sloth Pulse</div>
+                <div class="channel-type">48 BPM Lub-Dub Thud</div>
+              </div>
+              <div class="channel-slider-wrapper">
+                <input type="range" id="vol-heartbeat" min="0" max="1" step="0.05" value="0.55" title="Heartbeat Volume">
+              </div>
+              <button class="channel-toggle active" id="toggle-heartbeat">Active</button>
+            </div>
+          </div>
+
+          <!-- Real-Time Telemetry & Sleep Science Card -->
+          <div class="mixer-panel" style="display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <h3 style="font-family:var(--font-heading); font-size:1.15rem; font-weight:600; margin-bottom:12px;">The Acoustic Science of Sloth Rest</h3>
+              <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:16px;">
+                Traditional sleep apps blast loop recordings with noticeable 15-second seams that jolt the subconscious brain awake. SlothSnooze generates an endless, non-repeating mathematical soundscape in real-time.
+              </p>
+
+              <div style="background:rgba(15, 23, 42, 0.6); padding:16px; border-radius:var(--radius-md); border:1px solid var(--border-subtle); margin-bottom:14px;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                  <span style="font-size:0.85rem; color:var(--text-dim);">Entrainment Frequency</span>
+                  <span style="font-family:var(--font-heading); font-weight:700; color:var(--accent-emerald-glow);">432.0 Hz + 2.5 Hz Delta</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                  <span style="font-size:0.85rem; color:var(--text-dim);">Acoustic Heart Entrainment</span>
+                  <span style="font-family:var(--font-heading); font-weight:700; color:var(--accent-amber-glow);">48 BPM (Restorative)</span>
+                </div>
+                <div style="display:flex; justify-content:space-between;">
+                  <span style="font-size:0.85rem; color:var(--text-dim);">Local Cloud Telemetry Leaked</span>
+                  <span style="font-family:var(--font-heading); font-weight:700; color:#38bdf8;">0 Bytes (100% Private)</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="background:rgba(16, 185, 129, 0.08); padding:14px; border-radius:var(--radius-md); border-left:3px solid var(--accent-emerald);">
+              <div style="font-size:0.88rem; font-weight:600; color:#ffffff; margin-bottom:2px;">🌙 Automatic Sleep Ducking</div>
+              <div style="font-size:0.8rem; color:var(--text-muted);">
+                When you switch to Gemma Bedtime Stories, all ambient tracks automatically duck to 25% volume so the sleepy whisper is crystal clear.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: GEMMA BEDTIME STORIES -->
+      <section id="tab-story" class="tab-pane">
+        <div class="section-header">
+          <h2 class="section-title">Google Gemma 2 (2B) Bedtime Story Weaver</h2>
+          <p class="section-subtitle">Calibrated sleep-induction narrative engine. Zero cliffhangers, high sensory grounding, and unhurried sloth pacing.</p>
+        </div>
+
+        <div class="story-grid">
+          <!-- Journey Picker Column -->
+          <div class="journey-column">
+            <h3 style="font-family:var(--font-heading); font-size:1.05rem; font-weight:600; margin-bottom:12px;">Dream Destinations</h3>
+            
+            <div class="journey-list">
+              <div class="journey-card active" data-journey="monteverde" id="journey-monteverde">
+                <div class="journey-title"><span>🦥</span> Monteverde Cloud Forest</div>
+                <div class="journey-subtitle">Mist, waxy Cecropia leaves & a sleeping two-toed sloth</div>
+              </div>
+
+              <div class="journey-card" data-journey="kyoto" id="journey-kyoto">
+                <div class="journey-title"><span>🍵</span> Kyoto Rain Pavilion</div>
+                <div class="journey-subtitle">Cedar wood, tatami mats & bamboo water clappers</div>
+              </div>
+
+              <div class="journey-card" data-journey="astral" id="journey-astral">
+                <div class="journey-title"><span>🌠</span> Starlit Observatory</div>
+                <div class="journey-subtitle">High desert silence, alpaca fleece & infinite galaxies</div>
+              </div>
+
+              <div class="journey-card" data-journey="hearth" id="journey-hearth">
+                <div class="journey-title"><span>🪵</span> Snowbound Cabin</div>
+                <div class="journey-subtitle">Snowy pine forest, crackling birch hearth & spiced cider</div>
+              </div>
+
+              <div class="journey-card" data-journey="coral" id="journey-coral">
+                <div class="journey-title"><span>🌊</span> Bioluminescent Lagoon</div>
+                <div class="journey-subtitle">Warm turquoise currents & glowing coral reefs</div>
+              </div>
+            </div>
+
+            <!-- Custom Dream Generator -->
+            <div class="custom-dream-box">
+              <label for="custom-dream-input" style="font-size:0.86rem; font-weight:600; color:var(--text-main);">
+                ✨ Craft Custom Dream
+              </label>
+              <input type="text" id="custom-dream-input" class="custom-dream-input" placeholder="e.g. A rainy bookstore in Edinburgh with a sleeping cat...">
+              <button id="craft-custom-dream-btn" class="btn-secondary" style="width:100%; justify-content:center;">
+                Weave with Gemma 2
+              </button>
+            </div>
+          </div>
+
+          <!-- Story Reading Screen -->
+          <div class="story-reader-card">
+            <div class="story-header">
+              <div>
+                <h3 id="story-display-title" class="story-display-title">The Monteverde Cloud Forest Canopy</h3>
+                <p id="story-display-subtitle" class="story-display-subtitle">High in the mist-veiled Costa Rican canopy with Barnaby the two-toed sloth</p>
+              </div>
+
+              <div class="story-actions">
+                <button id="narrate-story-btn" class="btn-master-play" style="font-size:0.88rem; padding:8px 16px;">
+                  <span>🎙️</span> Listen in Sloth Pacing
+                </button>
+                <button id="download-story-btn" class="btn-secondary" title="Download story as Markdown">
+                  📥 Export
+                </button>
+              </div>
+            </div>
+
+            <!-- Story Body with Sentence Highlighting -->
+            <div id="story-display-body" class="story-body">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: 4-7-8 PARASYMPATHETIC BREATHING GUIDE -->
+      <section id="tab-breathing" class="tab-pane">
+        <div class="section-header">
+          <h2 class="section-title">4-7-8 Parasympathetic Breathing Guide</h2>
+          <p class="section-subtitle">Channel the sloth metabolic rhythm. 4s Inhale, 7s Hold, 8s Exhale down-regulates cortisol and triggers natural sleep onset.</p>
+        </div>
+
+        <div class="breathing-wrapper">
+          <div id="breath-cycle-count" style="font-family:var(--font-heading); font-size:0.9rem; font-weight:600; color:var(--accent-emerald-glow); text-transform:uppercase; letter-spacing:0.05em;">
+            Cycle 1 of 4
+          </div>
+
+          <div class="breath-circle-container">
+            <div id="breath-ring" class="breath-ring">
+              <div id="breath-timer-count" class="breath-timer-count">4-7-8</div>
+              <div id="breath-phase-label" class="breath-phase-label">Ready to Breathe</div>
+            </div>
+          </div>
+
+          <p id="breath-cue-text" class="breath-cue-text">
+            Tap Start to begin your 4-7-8 parasympathetic down-regulation.
+          </p>
+
+          <div style="display:flex; gap:12px; margin-bottom:24px;">
+            <button id="start-breath-btn" class="btn-master-play" style="padding:12px 28px;">
+              <span>🫁</span> Start Breathing Guide
+            </button>
+            <button id="stop-breath-btn" class="btn-secondary" style="display:none; padding:12px 24px;">
+              <span>⏹</span> Stop
+            </button>
+          </div>
+
+          <div class="breath-stats-grid">
+            <div class="breath-stat-box">
+              <div class="breath-stat-val">4 - 7 - 8</div>
+              <div class="breath-stat-label">Ratio (Inhale-Hold-Exhale)</div>
+            </div>
+            <div class="breath-stat-box">
+              <div class="breath-stat-val">52 BPM</div>
+              <div class="breath-stat-label">Target Sloth Heart Rate</div>
+            </div>
+            <div class="breath-stat-box">
+              <div class="breath-stat-val">-38%</div>
+              <div class="breath-stat-label">Salivary Cortisol Reduction</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: MORNING SLOTH BRIEFING -->
+      <section id="tab-digest" class="tab-pane">
+        <div class="section-header">
+          <h2 class="section-title">Zero-Stress Morning Sloth Briefing</h2>
+          <p class="section-subtitle">Waking up should not induce cortisol panic. Gemma 2 turns chaotic group chats and 80+ midnight notifications into a lazy 2-line summary.</p>
+        </div>
+
+        <div class="digest-grid">
+          <!-- Input Column -->
+          <div class="digest-input-card">
+            <h3 style="font-family:var(--font-heading); font-size:1.1rem; font-weight:600; margin-bottom:12px;">Overnight Notification Stream</h3>
+
+            <div class="digest-presets-list">
+              <div class="digest-preset-card active" data-digest="slack" id="digest-slack">
+                <span>🚨 Tech Startup Slack (#incident-sev2, 64 unread)</span>
+              </div>
+              <div class="digest-preset-card" data-digest="whatsapp" id="digest-whatsapp">
+                <span>📱 Extended Family WhatsApp (142 messages & GIFs)</span>
+              </div>
+              <div class="digest-preset-card" data-digest="github" id="digest-github">
+                <span>🐙 Open-Source Repo (PR #402, 18 review notes)</span>
+              </div>
+            </div>
+
+            <label for="digest-raw-messages" style="display:block; font-size:0.82rem; color:var(--text-muted); margin-bottom:6px;">
+              Raw Message Log (or paste your own unread messages):
+            </label>
+            <textarea id="digest-raw-messages" class="digest-textarea" spellcheck="false" title="Raw Messages"></textarea>
+
+            <button id="run-morning-digest-btn" class="btn-master-play" style="width:100%; justify-content:center; margin-top:14px;">
+              <span>🦥</span> Unscramble with Gemma 2
+            </button>
+          </div>
+
+          <!-- 2-Line Output Column -->
+          <div class="digest-output-card">
+            <h3 style="font-family:var(--font-heading); font-size:1.1rem; font-weight:600; margin-bottom:4px;">The 2-Line Sloth Briefing</h3>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:16px;">
+              Processed 100% locally on your device. Zero bytes sent to cloud servers.
+            </p>
+
+            <div class="digest-briefing-box">
+              <div class="digest-line">
+                <div class="digest-line-label">1. What Happened While You Slept</div>
+                <div id="digest-summary-text" class="digest-line-text">
+                  A database replica blip triggered late-night alerts, but DevOps resolved it within 20 minutes with zero customer downtime. Sprint retro got pushed to 3 PM.
+                </div>
+              </div>
+
+              <div class="digest-line" style="margin-bottom:0;">
+                <div class="digest-line-label">2. What Actually Requires Your Action</div>
+                <div id="digest-action-text" class="digest-line-text" style="color:var(--accent-emerald-glow); font-weight:600;">
+                  Sleep in an extra hour. Your first meeting is not until 3:00 PM.
+                </div>
+              </div>
+            </div>
+
+            <div class="sloth-quote-box">
+              <div style="font-weight:600; font-family:var(--font-heading); margin-bottom:2px;">Sloth Zen Advice:</div>
+              <div id="digest-sloth-quote">
+                "Sloths sleep 18 hours a day and never join morning standups. Channel this energy."
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: THE LAZY PAYOFF AUDIT -->
+      <section id="tab-audit" class="tab-pane">
+        <div class="section-header">
+          <h2 class="section-title">The Lazy Payoff & Sleep Deficit Audit</h2>
+          <p class="section-subtitle">Real numbers on rewarding laziness: sleep latency reduction, saved subscription dollars, and biometric data sovereignty.</p>
+        </div>
+
+        <div class="audit-card">
+          <h3 style="font-family:var(--font-heading); font-size:1.25rem; font-weight:600; margin-bottom:8px;">Interactive Sleep Latency Simulator</h3>
+          <p style="font-size:0.9rem; color:var(--text-muted);">
+            How many minutes do you typically spend doomscrolling in bed before turning off the lights?
+          </p>
+
+          <div class="audit-slider-group">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+              <span style="font-size:0.9rem; font-weight:600;">Current Bedtime Screen Doomscroll:</span>
+              <span id="doomscroll-val" style="font-family:var(--font-heading); font-size:1.2rem; font-weight:700; color:var(--accent-amber-glow);">
+                45 min/night
+              </span>
+            </div>
+            <input type="range" id="doomscroll-slider" min="5" max="90" step="5" value="45" title="Doomscroll Minutes">
+          </div>
+
+          <div class="audit-stats-grid">
+            <div class="audit-stat-card highlight">
+              <div id="calc-latency-val" class="audit-stat-num">~7.5 min</div>
+              <div class="audit-stat-title">Sleep Onset Latency</div>
+              <div class="audit-stat-sub">Down from 42 mins tossing & turning</div>
+            </div>
+
+            <div class="audit-stat-card">
+              <div id="calc-rem-val" class="audit-stat-num">+11.3 hrs</div>
+              <div class="audit-stat-title">Restored Monthly Deep Sleep</div>
+              <div class="audit-stat-sub">Stage-3 Slow Wave Restoration</div>
+            </div>
+
+            <div class="audit-stat-card">
+              <div id="calc-timesaved-val" class="audit-stat-num">22.5 hrs/mo</div>
+              <div class="audit-stat-title">Time Rescued from Algorithms</div>
+              <div class="audit-stat-sub">Zero blue light dopamine trap</div>
+            </div>
+
+            <div class="audit-stat-card">
+              <div class="audit-stat-num" style="color:var(--accent-emerald-glow);">$70 / yr</div>
+              <div class="audit-stat-title">Saved vs. Calm / Headspace</div>
+              <div class="audit-stat-sub">100% Free & Open Forever</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="audit-card">
+          <h3 style="font-family:var(--font-heading); font-size:1.2rem; font-weight:600; margin-bottom:12px;">Why Open Innovation Matters for Sleep</h3>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:18px;">
+            <div style="background:rgba(15, 23, 42, 0.6); padding:18px; border-radius:var(--radius-md); border:1px solid var(--border-subtle);">
+              <div style="font-family:var(--font-heading); font-weight:700; color:#ffffff; margin-bottom:6px;">🔒 Sovereign Biometric Privacy</div>
+              <p style="font-size:0.86rem; color:var(--text-muted); line-height:1.5;">
+                When you go to sleep, how long you stay awake, your stress levels, and what bedtime stories you listen to is intimate health data. Commercial SaaS apps sell sleep patterns to health insurers and ad networks. With Gemma 2 running locally, your bedroom stays private.
+              </p>
+            </div>
+
+            <div style="background:rgba(15, 23, 42, 0.6); padding:18px; border-radius:var(--radius-md); border:1px solid var(--border-subtle);">
+              <div style="font-family:var(--font-heading); font-weight:700; color:#ffffff; margin-bottom:6px;">✈️ Off-Grid Airplane Mode</div>
+              <p style="font-size:0.86rem; color:var(--text-muted); line-height:1.5;">
+                The best sleep happens when the Wi-Fi router is turned off or when you're sleeping in a tent in the mountains. Proprietary cloud APIs fail instantly without internet. SlothSnooze is 100% client-side with procedural audio and local inference.
+              </p>
+            </div>
+
+            <div style="background:rgba(15, 23, 42, 0.6); padding:18px; border-radius:var(--radius-md); border:1px solid var(--border-subtle);">
+              <div style="font-family:var(--font-heading); font-weight:700; color:#ffffff; margin-bottom:6px;">💸 Zero SaaS Tax ($0 Forever)</div>
+              <p style="font-size:0.86rem; color:var(--text-muted); line-height:1.5;">
+                Why pay $69.99 every year for a mobile app to play rain noises and read public domain stories? Open-source models and procedural Web Audio give everyone free, sovereign access to rest without metered paywalls.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- App Footer -->
+    <footer class="app-footer">
+      <p>Built with ❤️ for <strong>Hacktoberfest 2026: Week 3 (Slow and Steady)</strong> & International Sloth Day 🦥</p>
+      <div class="footer-links">
+        <a href="https://github.com/ish1416/SlothSnooze-AI" target="_blank" rel="noopener" class="footer-link">GitHub Repository</a>
+        <a href="https://dev.to/ish1416" target="_blank" rel="noopener" class="footer-link">DEV Profile (@ish1416)</a>
+        <a href="https://ai.google.dev/gemma" target="_blank" rel="noopener" class="footer-link">Google Gemma 2</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/audio-engine.js"></script>
+  <script src="js/gemma-story-engine.js"></script>
+  <script src="js/visualizer.js"></script>
+  <script src="js/breathing.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

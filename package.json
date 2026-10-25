@@ -1,0 +1,23 @@
+{
+  "name": "slothsnooze-ai",
+  "version": "1.0.0",
+  "description": "100% Offline Sleep Sanctuary, Ambient Soundscape Synthesizer & Sloth-Paced Dream Weaver with Google Gemma 2 (2B)",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx -y serve . -l 3000",
+    "dev": "npx -y serve . -l 3000"
+  },
+  "keywords": [
+    "hacktoberfest",
+    "hf26challenge",
+    "gemma",
+    "gemma2",
+    "devchallenge",
+    "web-audio-api",
+    "sleep-aid",
+    "offline-ai",
+    "binaural-beats"
+  ],
+  "author": "Ishita Singh",
+  "license": "MIT"
+}
