@@ -31,6 +31,8 @@ Built in honor of **International Sloth Day** and **Hacktoberfest 2026 (Week 3: 
 
 ## 🎥 Walkthrough & Demo
 
+![SlothSnooze AI Walkthrough Demo](docs/assets/slothsnooze_demo.gif)
+
 * **🌐 Live Deployed Web App**: [https://ish1416.github.io/SlothSnooze-AI/](https://ish1416.github.io/SlothSnooze-AI/)
 * **📦 Official GitHub Repository**: [https://github.com/ish1416/SlothSnooze-AI](https://github.com/ish1416/SlothSnooze-AI)
 
